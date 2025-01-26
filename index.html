@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)https://cdpn.io/cpe/boomboom/index.html?key=index.html-9d15c6bc-95e7-d5b6-129a-802f14cbb1b8 -->
+<html lang="en" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+  <title>CodePen Demo</title>
+
+  <meta name="robots" content="noindex">
+
+  <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+  <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
+  <link rel="canonical" href="https://codepen.io/dosullz/pen/QNxdzd">
+
+  
+  
+
+  <style id="INLINE_PEN_STYLESHEET_ID">
+    
+
+  </style>
+
+  
+<script src="./stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js.download"></script>
+<script src="./iframeConsoleRunner-6d8bf8b4b479137260842506acbb12717dace0823c023e08b96360e60b0840d9.js.download"></script>
+<script src="./iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js.download"></script>
+<script src="./iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js.download"></script>
+</head>
+
+<body>
+  
+
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .profile-card {
+            text-align: center;
+        }
+        .profile-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 20px 0;
+        }
+    </style>
+
+
+    <!-- Login Page -->
+    <div id="login" class="container" style="display: none;">
+        <h1>Login Page</h1>
+        <form onsubmit="return validatePassword();">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required="" fdprocessedid="he2xp">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required="" fdprocessedid="bbpoc">
+
+            <button type="submit" fdprocessedid="8z3t48">Login</button>
+        </form>
+        <p id="error" style="color:red; display:none;">Password must be at least 8 characters long!</p>
+    </div>
+
+    <!-- User Information Page -->
+    <div id="user-info" class="container" style="display: none;">
+        <h2>User Information Page</h2>
+        <form>
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required="">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required="">
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required="">
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required="">
+
+            <button type="button" onclick="showProfile();">Submit</button>
+        </form>
+    </div>
+
+    <!-- Personal Profile Page -->
+    <div id="profile" class="container" style="display: block;">
+        <h2>Personal Profile Page</h2>
+        <div class="profile-card">
+            <img src="https://via.placeholder.com/150" alt="Profile Picture">
+            <p><strong>Name:</strong> <span id="profileName">simran chy</span></p>
+            <p><strong>Email:</strong> <span id="profileEmail">jsj220029119@jainuniversity.ac.in</span></p>
+            <p><strong>Phone:</strong> <span id="profilePhone">9113249457</span></p>
+            <p><strong>Address:</strong> <span id="profileAddress">banglore</span></p>
+        </div>
+    </div>
+
+    <script>
+        function validatePassword() {
+            const password = document.getElementById('password').value;
+            const error = document.getElementById('error');
+            if (password.length < 8) {
+                error.style.display = 'block';
+                return false;
+            }
+            error.style.display = 'none';
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('user-info').style.display = 'block';
+            return false; // For demo purposes
+        }
+
+        function showProfile() {
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+
+            document.getElementById('profileName').innerText = name;
+            document.getElementById('profileEmail').innerText = email;
+            document.getElementById('profilePhone').innerText = phone;
+            document.getElementById('profileAddress').innerText = address;
+
+            document.getElementById('user-info').style.display = 'none';
+            document.getElementById('profile').style.display = 'block';
+        }
+    </script>
+
+
+  
+  
+
+
+<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body></html>
